@@ -46,10 +46,10 @@ function PowerBCD {
         $Acl.SetAccessRule($AdminRule)
         $RegKey.SetAccessControl($Acl)
        
-        # Get active Boot Loader GID
+        # Get active Boot Loader GUID
         $ActiveLoaderGuid =  Get-ItemProperty -Path $GUID_BOOT_LOADER_PATH -Name Element | Select-Object -ExpandProperty Element
        
-        # Change
+        # Modify
         if ($PSBoundParameters.ContainsKey('TestSigning')) {
             $elementKeyPath = "$REG_BASE_PATH\Objects\$ActiveLoaderGuid\Elements\$ELEMENT_TESTSIGNING"
             $data = if ($TestSigning -eq "On") { $ELEMENTVALUE_TESTSIGNING_ON } else { $ELEMENTVALUE_TESTSIGNING_OFF }
